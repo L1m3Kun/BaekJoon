@@ -15,4 +15,4 @@ for test_case in range(C):
         if i > average:
             over_student += 1
     total = round(over_student / (len(arr) - 1) * 100,3)
-    print(f'{total}%')
+    print(f'{total:.3f}%')
