@@ -8,9 +8,6 @@ if b+c>=60:
         a += 1
         if a==24:
             a = 0
-
-            
-    
 else:
     minute = b+c
 

@@ -1,5 +1,7 @@
 while True:
-    a,b = input().split()
-    if a == b=="":
+    try:
+        a,b = input().split()
+        print(int(a)+int(b))
+    except:
         break
-    print(int(a)+int(b))
+    

@@ -3,4 +3,3 @@ while True:
     if a == b==0:
         break
     print(a+b)
-    
