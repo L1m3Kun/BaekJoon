@@ -7,10 +7,6 @@ def repeat_str(str):
         total = total + idx*R           # 반복해서 출력
     return total
         
-        
-            
-
-        
 T = int(sys.stdin.readline().strip())
 for test_case in range(1,T+1):
     S = list(sys.stdin.readline().strip().split())
