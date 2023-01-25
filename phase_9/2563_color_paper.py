@@ -3,11 +3,13 @@ paper_num = int(input())
 paper_list = []
 for idx in range(paper_num):
     paper_list.append(list(map(int, input().split())))
-paper_area = 300
-for num in range(paper_num-1):
-    for idx in range(num + 1, paper_num):
-        print(f'num = {num}, idx = {idx}')
-        if (paper_list[idx][0] < paper_list[num][0] < paper_list[idx][0] + 10) and (paper_list[num][1] < paper_list[idx][1] < paper_list[num][1] + 10):   # 왼쪽으로 부터 거리가 n < < n+10 이면서 아래쪽으로부터 n < < n+10 일때
-            paper_area -= (paper_list[idx][0] + 10 - paper_list[num][0]) * (paper_list[num][1] + 10 - paper_list[idx][1])
+total_area = [[0 for _ in range(100)]for _ in range(100)]       # 총 도면
 
-print(paper_area)
+for k in range(len(paper_list)):
+    for i in range(10):
+        for j in range(10):
+            total_area[paper_list[k][0]+i][paper_list[k][1]+j] = 1          # 사각형 색칠 = 1
+result = 0
+for idx in total_area:
+    result += sum(idx)                                                      # 하나당 1면적이므로 1을 모두 더하면 면적
+print(result)
