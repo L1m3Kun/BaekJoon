@@ -1,14 +1,14 @@
 import sys
-# count 정렬 활용하기
+
 N = int(sys.stdin.readline())
-num_list = [0] * 10001
+num_list = [0] * 10001              # 0~100001 까지의 리스트 생성
 for _ in range(N):
     num=int(sys.stdin.readline())
-    num_list[num] += 1
+    num_list[num] += 1              # 입력받은 수를 index로 +1
 for idx in range(len(num_list)):
-    if num_list[idx] != 0:
-        for num in range(num_list[idx]):
-            print(idx)
+    if num_list[idx] != 0:          # 1번이라도 나왔으면
+        for _ in range(num_list[idx]):      # 그 수만큼 반복해서
+            print(idx)                      # 출력
     
 '''
 # count 정렬 활용하기
