@@ -1,17 +1,17 @@
 import sys
-que = []
+que = []                            # queue 생성
 
-def push_que(x):
-    que.append(x)
+def push_que(x):            
+    que.append(x)                   # queue 삽입
 
 def pop_que():
     if len(que) > 0:
-        return que.pop(0)
+        return que.pop(0)           # 첫번째 인자 빼기
     else: 
         return -1
 
 def size_que():
-    return len(que)
+    return len(que)                 # 길이
 
 def empty_que():
     if len(que) == 0:
