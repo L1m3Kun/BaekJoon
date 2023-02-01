@@ -1,32 +1,21 @@
 import sys
 
 
-def merge_sort_ready(arr):
-	arr.sort()
-	if len(arr) < 3:
+def merge_sort(arr):
+	if len(arr) == 1:
 		return arr
 	else:
-		q = int((arr[0] + arr[-1])/2)
-		return arr, q
+		arr_aft = merge_sort(arr[:int(len(arr) / 2)])
+		arr_bef = merge_sort(arr[int(len(arr) / 2):])
+		result = []
+		for i in arr_aft
+		if arr_aft[i] > arr_bef[j]:
+			result.append()
+
+		return
 
 
-def merge_sort(arr, p, q, r):
-	i = p
-	j = q + 1
-	tmp = []
-	while i <= q and j <= r:
-		if arr[i] <= arr[j]:
-			tmp.append(arr[i])
-		else:
-			tmp.append(arr[j])
-	while i <= q:
-		tmp.append(arr[i]) 
-	while j <= r:
-		tmp.append(arr[j])
-	return tmp 
 
-
-# N, k = map(int, sys.stdin.readline().strip().split())
-lst = list(map(int,sys.stdin.readline().strip().split()))
-lst, q = merge_sort_ready(lst)
-print(merge_sort(lst, lst[0], q, lst[-1]))
+N, k = map(int, sys.stdin.readline().strip().split())
+lst = list(map(int, sys.stdin.readline().strip().split()))
+print(merge_sort(lst))
