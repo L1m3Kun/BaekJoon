@@ -1,6 +1,7 @@
 import sys
 
-def merge_sort_ready(arr = []):
+
+def merge_sort_ready(arr):
 	arr.sort()
 	if len(arr) < 3:
 		return arr
@@ -8,10 +9,10 @@ def merge_sort_ready(arr = []):
 		q = int((arr[0] + arr[-1])/2)
 		return arr, q
 
-def merge_sort(arr:list, p, q, r):
+
+def merge_sort(arr, p, q, r):
 	i = p
 	j = q + 1
-	t = 0
 	tmp = []
 	while i <= q and j <= r:
 		if arr[i] <= arr[j]:
@@ -24,6 +25,8 @@ def merge_sort(arr:list, p, q, r):
 		tmp.append(arr[j])
 	return tmp 
 
+
+# N, k = map(int, sys.stdin.readline().strip().split())
 lst = list(map(int,sys.stdin.readline().strip().split()))
 lst, q = merge_sort_ready(lst)
 print(merge_sort(lst, lst[0], q, lst[-1]))
