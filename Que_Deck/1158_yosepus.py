@@ -2,15 +2,15 @@ import sys
 from collections import deque
 
 N, k = deque(map(int,sys.stdin.readline().strip().split()))
+count = 1
 yoseputh = deque([])
-N_lst = [range(1,N+1)]
-count = 0
 while True:
-    if len(N_lst) != 0:
-        count += 1
-        if count & k == 0:
-            yoseputh.append(N_lst.pop(count))
-            count == 0
+    if len(yoseputh) != N:
+        
+        if count == N:
+            count = 1
+        else:
+            count += 1
     else:
         break
 print(yoseputh)
