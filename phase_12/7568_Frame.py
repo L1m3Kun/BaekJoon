@@ -1,10 +1,9 @@
 import sys
-
+# 입력
 N = int(sys.stdin.readline())
-
 people = [list(map(int, sys.stdin.readline().strip().split())) for _ in range(N)]
 
-frame_list = []
+# 몸무게와 키가 모두 큰 경우만 카운트해서 출력
 for i in range(N):
     frame = 1
     for j in range(N):
