@@ -6,8 +6,8 @@ def matrix_multi(arr1, arr2):
     for i in range(a):
         for j in range(a):
             for k in range(a):
-                tmp[i][j] += (arr1[i][k] * arr2[k][j])
-            tmp[i][j] %= 1000
+                tmp[i][j] += (arr1[i][k] * arr2[k][j]) % 1000
+
     return tmp
 
 def square_mat(arr, n):
@@ -26,5 +26,16 @@ def square_mat(arr, n):
 N, B = map(int, sys.stdin.readline().strip().split())
 N_list = [list(map(int, sys.stdin.readline().strip().split())) for _ in range(N)]
 
-for idx in range(N):
-    print(*square_mat(N_list, B)[idx])
+# for i in range(N):
+#     for j in range(N):
+#         print(square_mat(N_list, B)[i][j] % 1000, end=" ")
+#     print()
+
+# B=1일때 처리 및 언패킹으로 간편화
+
+if B == 1:
+    for i in range(N):
+        print(*list(map(lambda x: x%1000, [N_list[i][j] for j in range(N)])))
+else:
+    for i in range(N):
+        print(*list(map(lambda x:x%1000, [square_mat(N_list, B)[i][j] for j in range(N)])))
