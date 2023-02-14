@@ -2,9 +2,9 @@ import sys
 from collections import deque
 
 N, k = deque(map(int,sys.stdin.readline().strip().split()))
-<<<<<<< HEAD
+# <<<<<<< HEAD
 count = 1
-=======
+# =======
 
 # 수학적 개념으로 풀기
 
