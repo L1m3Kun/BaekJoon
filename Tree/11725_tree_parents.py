@@ -11,9 +11,11 @@ for i in range(N):
     for j in range(N):
         if arr[i][j] == 1:
             par[i].append(j)
-
-print(arr)
+arr = []
+while True:
+    pass
 print(par)
+
 
 
 # import sys
