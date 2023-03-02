@@ -1,27 +1,30 @@
 import sys
+input = sys.stdin.readline
 
-def devide(start, end, ability):
-    if start == end:
-        # result.append(ability)
-        # print(result)
-        print(ability)
+def DFS(cnt, start):
+    global ans
+    if cnt == N//2:
+        A = 0
+        for i in range(N):
+            for j in range(N):
+                if stack[i] and stack[j]:
+                    A += board[i][j]
+                elif not stack[i] and not stack[j]:
+                    A -= board[i][j]
+        ans = min(ans, abs(A))
         return
-    else:
-        for j in range(end):
-                if j not in stack:
-                    stack.append(j)
-                    print(stack)
-                    devide(start+1, end, ability + arr[start][j]+arr[j][start])
-                    stack.pop()
-        return
 
-N = int(sys.stdin.readline().strip())
-arr = [list(map(int, sys.stdin.readline().strip().split())) for _ in range(N)]
-stack = []
-result = []
-abil = 0
-devide(0,N//2, abil)
-print(result)
-# result.append(abs(devide(0,N//2) - devide(N//2, N)))
-# print(min(result))
+    for u in range(start, N):
+        if not stack[u]:
+            stack[u] = 1
+            DFS(cnt+1,u+1)
+            stack[u] = 0
 
+for test_case in range(1, int(input())+1):
+    N = int(input())
+    board = [list(map(int, input().strip().split())) for _ in range(N)]
+    stack = [0]*N
+    ans = 40000
+    DFS(0,0)
+
+    print(f'#{test_case} {ans}')
