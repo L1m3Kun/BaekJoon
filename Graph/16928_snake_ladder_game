@@ -1,0 +1,34 @@
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+N, M = map(int, input().strip().split())
+ladder = {}
+for _ in range(N):
+    start, end = map(int, input().strip().split())
+    ladder[start] = end
+snake = {}
+for _ in range(M):
+    start, end = map(int, input().strip().split())
+    snake[start] = end
+
+queue = deque()
+visited = [0] * 101
+visited[1] = 1
+start = 1
+while start < 100:
+    if start not in snake and start not in ladder:
+        start += 1
+        visited[start] += 1
+    while queue:
+        i = queue.popleft()
+        if i in ladder.keys():
+            for j in ladder[i]:
+                if not visited[j]:
+                    queue.append(j) 
+                    visited[j] = visited[i] + 1
+        elif i in snake.keys():
+            for j in snake[i]:
+                if not visited[j]:
+                    queue.append(j)
+                    visited[j] = visited[i] + 1
