@@ -11,7 +11,7 @@ for _ in range(V):
     for i in range(1, len(arr)-1, 2):
         if (arr[0], arr[i+1]) not in tree[arr[i]]:
             tree[arr[0]].append((arr[i], arr[i+1])) 
-print(tree)
+# print(tree)
 max_val = max_value = 0
 for i in range(1, (V+1)//2):
     stack = deque([i])
