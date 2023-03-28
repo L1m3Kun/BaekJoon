@@ -10,23 +10,40 @@ def check(paper):
 def solution(paper):
     global blue, white
     if len(paper) == 1:
-        if paper[0] == 1:
+        if paper[0][0] == 1:
             blue += 1
         else:
             white += 1
         return
     if check(paper) == len(paper)**2:
-        blue += len(paper)**2
+        blue += 1
         return
     elif check(paper) == 0:
-        white += len(paper)**2
+        white += 1
         return
     else:
-        half = len(paper)//2
-        solution(paper[:half+1][:half+1])
-        solution(paper[half:][:half+1])
-        solution(paper[:half+1][half:])
-        solution(paper[half:][half:])
+        n = len(paper)
+        half = n//2
+        tmp = [[0] * (half) for _ in range(half)]
+        for i in range(half):
+            for j in range(half):
+                tmp[i][j] = paper[i][j]     
+        solution(tmp)
+
+        for i in range(half):
+            for j in range(half, n):
+                tmp[i][j-half] = paper[i][j]     
+        solution(tmp)
+
+        for i in range(half, n):
+            for j in range(half):
+                tmp[i-half][j] = paper[i][j]     
+        solution(tmp)
+        
+        for i in range(half, n):
+            for j in range(half, n):
+                tmp[i-half][j-half] = paper[i][j]     
+        solution(tmp)
         return 
         
 
@@ -35,6 +52,7 @@ def solution(paper):
 
 N = int(input())
 paper = [list(map(int, input().strip().split())) for _ in range(N)]
-
-# solution(paper)
-print(paper[:5][:5])
+white = blue = 0
+solution(paper)
+print(white, blue, sep='\n')
+    

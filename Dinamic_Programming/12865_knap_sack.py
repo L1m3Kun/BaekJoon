@@ -5,12 +5,12 @@ N, K = map(int, input().split())
 arr = [[0,0]] + [list(map(int, input().split())) for _ in range(N)]
 dp = [[0] * (K+1) for _ in range(N+1)]
 
-for i in range(1, N+1):
-    for j in range(1, K+1):
-        if j < arr[i][0]:
+for i in range(1, N+1):     # 넣을 수 있는 물건의 수
+    for j in range(1, K+1):     # 넣을 수 있는 무게의 가능성
+        if j < arr[i][0]:           # 현재 쥐고있는 물건의 무게보다 작으면 이전의 값을 받으며 패스
             dp[i][j] = dp[i-1][j]
-        else:
-            dp[i][j] = max(dp[i-1][j], dp[i][j-arr[i][0]]+ arr[i][1])
+        else:                       # 현재 쥐고 있는 물건의 무게와 같거나 크면 쥐고있는 물건의 무게에서 제한된 K 까지 모든 경우의 수와 이전까지 저장된 값 비교
+            dp[i][j] = max(dp[i-1][j], dp[i-1][j-arr[i][0]]+ arr[i][1])
 # [print(*dp[i]) for i in range(N+1)]
 print(dp[N][K])
 
