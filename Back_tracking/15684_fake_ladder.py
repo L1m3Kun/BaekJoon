@@ -1,6 +1,17 @@
 import sys
 input = sys.stdin.readline
 
+def backtracking(i, j, H, start):
+    if i == H:
+        return
+    if not 0<= j < N:
+        return
+    if ladder[i][j]:
+        if j < N:
+            backtracking(i, j+1,H, start)
+    
+
+
 N, M, H = map(int, input().split())
 if not M:
     print(0)
