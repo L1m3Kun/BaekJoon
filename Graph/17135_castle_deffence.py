@@ -37,7 +37,19 @@ def score(place):
 
 
 def one_archer_kill(stage, place):
-    
+    killed =[]
+    visited = [0]
+    if field[stage][place]:
+        killed.append((stage, place))
+        visited[stage][place] = 1
+    que = deque([(stage, place)])
+    while que:
+        i, j = que.popleft()
+        for di, dj in [(0, -1), (-1, 0), (0, 1)]:
+            ni, nj = i+di, j+dj
+            if field[ni][nj]:
+                killed.append((ni,nj))
+
 
 N, M, D = map(int, input().strip().split())
 field = [list(map(int, input().strip().split())) for _ in range(N)]
