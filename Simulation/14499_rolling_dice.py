@@ -21,7 +21,7 @@ def game_start(i, j):
             elif request == 2:
                 pass
                 tmp = row[2]
-                for idx in range(2,0,-1):
+                for idx in range(1,3):
                     row[idx] = row[idx-1]
                 row[2] = top
                 bottom = check_field(ni,nj, row[1])
