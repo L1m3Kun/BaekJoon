@@ -1,6 +1,6 @@
 # 4485 녹색 옷 입은 애가 젤다지?
 import sys
-from collections import deque
+# from collections import deque
 import heapq
 input = sys.stdin.readline
 
