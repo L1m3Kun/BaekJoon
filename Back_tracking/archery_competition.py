@@ -1,3 +1,4 @@
+# 양궁대회
 max_score = 1
 lion = [0] * 11
 visited = [0] * 11
