@@ -11,10 +11,8 @@ input = sys.stdin.readline
 switch_N = int(input())
 switch = list(map(int, input().split()))
 student_N = int(input())
-student_list = [list(map(int, input().split())) for _ in range(student_N)]
 
-
-for student in student_list:
+for student in [list(map(int, input().split())) for _ in range(student_N)]:
     # 남자
     if student[0] == 1:
         for number in range(student[1]-1, switch_N, student[1]):
