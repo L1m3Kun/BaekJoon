@@ -2,15 +2,14 @@
 import sys
 input = sys.stdin.readline
 
-Numbers = [0]*100001
-
-for i in range(1,100001):
-    Numbers[i] = Numbers[i-1]+i
 # print(Numbers[:5])
-left = right = 0
 
 N = int(input())
 arr = list(map(int,input().split()))
+Numbers = [0]*(N+1)
+for i in range(1,N+1):
+    Numbers[i] = Numbers[i-1]+i
+left = right = 0
 ans = 0
 while left < N:
     print(left, right)
@@ -22,6 +21,9 @@ while left < N:
     else:  
         ans += Numbers[right - left]
         print("ans", ans)
+
         left += 1
+
+
         
 print(ans) 
