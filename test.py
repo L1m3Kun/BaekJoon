@@ -1,3 +1,5 @@
+# 행렬 테두리 회전하기
+
 def turn(matrix, arr):
     si, sj, ei, ej = arr[0]-1, arr[1]-1, arr[2]-1, arr[3]-1
     while True:
