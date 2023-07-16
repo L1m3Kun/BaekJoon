@@ -1,43 +1,26 @@
-cap = 1
-n = 4
-deliveries = [1, 1, 1, 0]
-pickups =[0, 0, 0, 1]
+def turn(matrix, arr):
+    si, sj, ei, ej = arr[0]-1, arr[1]-1, arr[2]-1, arr[3]-1
+    while True:
+        pass
+    return matrix
+        
 
-def solution(cap, n, deliveries, pickups):
-    answer = 0
-    pivot = n-1
-    
-    while pivot >=0:
-        # for i in range(pivot-1, -1, -1):
-        #     if deliveries[i] or pickups[i]:    
-        #         answer += (i+1)*2
-        #         pivot = i+1
-        #         break
-        # else:
-        #     break
-        if deliveries[pivot] or pickups[pivot]:
-            print(pivot)
-            answer += (pivot +1)*2
-            maxG = maxT = cap
-            for i in range(pivot, -1, -1):
-                if deliveries[i]:
-                    if deliveries[i] >= maxG:
-                        deliveries[i] -= maxG
-                        maxG = 0
-                    else:
-                        maxG -= deliveries[i]
-                        deliveries[i] = 0
-                if pickups[i]:
-                    if pickups[i] >= maxT:
-                        pickups[i] -= maxT
-                        maxT = 0
-                    else:
-                        maxT -= pickups[i]
-                        pickups[i] = 0
-                if not maxG and not maxT:
-                    break
 
-        pivot -=1
+def solution(rows, columns, queries):
+    answer = []
+    matrix = [[0]* columns for _ in range(rows)]
+    for i in range(1, rows+1):
+        for j in range(1, columns+1):
+            matrix[i-1][j-1] = (i-1) * columns + j
+    # print(matrix)
+    for quest in queries:
+        matrix = turn(matrix, quest)
+
+    for i in range(1, rows+1):
+        for j in range(1, columns+1):
+            if matrix[i-1][j-1] != (i-1) * columns + j:
+                answer.append(matrix[i-1][j-1])
+    answer.sort()
     return answer
 
-print(solution(cap, n, deliveries, pickups))
+solution(6, 6, [[2,2,5,4],[3,3,6,6],[5,1,6,3]])
