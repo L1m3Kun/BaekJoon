@@ -2,9 +2,10 @@
 def solution(rows, columns, queries):
     answer = []
     matrix = [[j + columns*i for j in range(1, columns+1)] for i in range(rows)]
-    
+    for i in range(rows):
+        print(matrix[i])
     for quest in queries:
-        # print(quest)
+        print(quest)
         i, j = quest[0]-1, quest[1]-1
         tmp = matrix[i+1][j]
         while True:
@@ -38,8 +39,8 @@ def solution(rows, columns, queries):
         print(matrix[i])
     for i in range(rows):
         for j in range(columns):
-            print(matrix[i][j], end=", ")
-            print((j+1)+columns*i)
+            # print(matrix[i][j], end=", ")
+            # print((j+1)+columns*i)
             if matrix[i][j] != (j+1)+columns*i:
                 answer.append((j+1)+columns*i)
     answer.sort()
