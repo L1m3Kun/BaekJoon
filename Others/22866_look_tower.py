@@ -8,6 +8,48 @@ towers = list(map(int, input().split()))
 dp = [[] for _ in range(N)]
 left_stack = []
 right_stack = []
+print(dp)
+left = 0
+right = N - 1
+while left < N:
+    while left_stack:
+        if towers[left_stack[-1]] > towers[left]:
+            break
+        left_stack.pop()
+    dp[left] = (len(left_stack), left_stack[-1] if left_stack else 0)
+    left_stack.append(left)
+
+    left += 1
+while right >= 0:
+    while right_stack:
+        if towers[right_stack[-1]] > towers[right]:
+            break
+        right_stack.pop()
+    dp[right] = (
+        max(dp[right][0], len(right_stack)),
+        (
+            (
+                dp[right][1]
+                if abs(dp[right][1] - right) < abs(right_stack[-1] - right)
+                else right_stack[-1]
+            )
+            if right_stack
+            else dp[right][1]
+        ),
+    )
+    right_stack.append(right)
+    right -= 1
+print(dp)
+"""
+import sys
+
+input = sys.stdin.readline
+
+N = int(input())
+towers = list(map(int, input().split()))
+dp = [[] for _ in range(N)]
+left_stack = []
+right_stack = []
 
 left = 0
 right = N - 1
@@ -39,7 +81,6 @@ for i in range(N):
     print(len(dp[i]), nearest + 1) if dp[i] else print(0)
 
 
-"""
 
 import sys
 
