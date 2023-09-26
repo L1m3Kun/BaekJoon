@@ -6,28 +6,15 @@ input = sys.stdin.readline
 A, B = map(int, input().split())
 
 """
-2, 12 -> 2, 4
-4자리
-1이 1개인 경우
-4가지
-1이 2개인 경우
-
-1이 3개인 경우
-
+1 -> 1
+2 -> 3     4
+3 -> 8     12
+4 -> 20    32
+5 -> 
 
 """
 
-
-def ten_to_bin(num):
-    s = ""
-    while num >= 1:
-        if num == 1:
-            s += "1"
-            return s
-        s += str(num % 2)
-        num //= 2
-    return s
-
-
-binary_a = ten_to_bin(A)
-binary_b = ten_to_bin(B)
+square = [0] * 60
+num = 1
+b = max(A, B)
+a = min(A, B)
