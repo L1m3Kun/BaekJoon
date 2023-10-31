@@ -4,32 +4,29 @@ import sys
 input = sys.stdin.readline
 
 
-def finish_check(line: str, o_cnt: int, x_cnt: int) -> bool:
-    win = []
+def check(line: str, S: str) -> bool:
     for i in range(3):
-        if line[i] != "." and line[i] == line[i + 3] == line[i + 6]:
-            win.append(line[i])
-        if line[i * 3] != "." and line[i * 3] == line[i * 3 + 1] == line[i * 3 + 2]:
-            win.append(line[i * 3])
-    if line[4] != "." and (
-        line[0] == line[4] == line[8] or line[2] == line[4] == line[6]
-    ):
-        win.append(line[4])
-    if len(win) == 1:
-        if win[0] == "X" and (x_cnt - o_cnt == 1):
+        # 세로 체크
+        if line[i] == line[i + 3] == line[i + 6] == S:
             return True
-        elif win[0] == "O" and (x_cnt == o_cnt):
+        # 가로 체크
+        if line[i * 3] == line[i * 3 + 1] == line[i * 3 + 2] == S:
             return True
-    elif len(win) == 0:
-        if line.count(".") == 0 and x_cnt == 5 and o_cnt == 4:
-            return True
+    # 대각선 체크
+    if line[0] == line[4] == line[8] == S or line[2] == line[4] == line[6] == S:
+        return True
     return False
 
 
 def solution(line: str, o_cnt: int, x_cnt: int) -> bool:
-    if o_cnt >= 5 or x_cnt >= 6:
+    if x_cnt > o_cnt + 1 or o_cnt > x_cnt:
         return False
-    if finish_check(line, o_cnt, x_cnt):
+    # 3가지 이외에는 종료될 수가 없음
+    if o_cnt == x_cnt and check(line, "O") and not check(line, "X"):
+        return True
+    if o_cnt + 1 == x_cnt and check(line, "X") and not check(line, "O"):
+        return True
+    if o_cnt == 4 and x_cnt == 5 and not check(line, "O"):
         return True
     return False
 
@@ -37,6 +34,7 @@ def solution(line: str, o_cnt: int, x_cnt: int) -> bool:
 if __name__ == "__main__":
     while True:
         line = input().strip()
+        # 갯수 체크
         o_cnt = line.count("O")
         x_cnt = line.count("X")
         if line == "end":
@@ -126,4 +124,74 @@ def solution():
 if __name__ == "__main__":
     solution()
 
+"""
+""" 예외
+. X X
+X . X
+OOO
+
+
+OXO
+XOX
+OXX
+
+XXO
+XOO
+OXX
+
+OXX
+OOX
+OXX
+
+XXOXOXOO.
+
+OOX
+XOO
+XXO
+
+XXX
+XOO
+OXO
+
+XXOXOXOOX
+
+XOOX.OXXO
+OXO
+XOO
+XXX
+
+.XX
+X.X
+OOO
+
+XXX
+XXX
+XXX
+
+OXXOOOXXX
+
+OXX
+OOO
+XXX
+
+XXO
+OXX
+OOX
+
+XXX
+OOX
+OOX
+
+XXX
+OOX
+OOX
+
+XXO
+OOX
+XOX
+
+
+.XX
+X.X
+OOO
 """
