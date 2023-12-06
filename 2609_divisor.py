@@ -2,20 +2,16 @@
 input = __import__("sys").stdin.readline
 
 
-def find_measure(num:int) -> set:
-    measure = set()
-    for i in range(1, num//2+1):
-        if i * (num//i) == num:
-            measure.add(i)
-            measure.add(num//i)
-    return measure
+def GCD(num1: int, num2: int) -> int:
+    while num2:
+        num1, num2 = num2, num1 % num2
+    return num1
 
 
-def solution(num1:int, num2:int) -> None:
-    m1 = find_measure(num1)
-    m2 = find_measure(num2)
-    
-    return
+def solution(num1: int, num2: int) -> None:
+    gcd = GCD(num1, num2)
+    lcm = (num1 * num2) // gcd
+    print(gcd, lcm, sep="\n")
 
 
 if __name__ == "__main__":
