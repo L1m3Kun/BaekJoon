@@ -1,3 +1,4 @@
+# 8393 합
 import sys
 
 N = int(sys.stdin.readline().strip())

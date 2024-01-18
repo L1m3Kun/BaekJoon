@@ -1,3 +1,4 @@
+# 2563 색종이
 paper_num = int(input())
 
 paper_list = []

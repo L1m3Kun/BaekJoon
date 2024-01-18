@@ -1,3 +1,4 @@
+# 2675 문자열 반복
 import sys
 
 def repeat_str(str):

@@ -1,3 +1,4 @@
+# 5622 다이얼
 def find_num(alphabet_list):
     num = 0
     for alphabet in alphabet_list:      #아스키코드를 이용한 변환

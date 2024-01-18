@@ -1,3 +1,4 @@
+# 2566 최댓값
 arr = []
 
 for idx in range(9):
