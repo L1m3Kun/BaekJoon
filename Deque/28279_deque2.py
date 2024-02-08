@@ -35,10 +35,11 @@ class CustumDeque:
         if self.l:
             num = self.queue[self.first_index]
             self.queue[self.first_index] = 0
-            if self.first_index == self.max_index:
-                self.first_index = 0
-            else:
-                self.first_index += 1
+            if self.last_index != self.first_index:
+                if self.first_index == self.max_index:
+                    self.first_index = 0
+                else:
+                    self.first_index += 1
             self.l -= 1
             return num
         else:
@@ -99,38 +100,3 @@ def solution():
 
 if __name__ == "__main__":
     solution()
-
-
-
-# # 28279 덱 2
-# import sys
-# from collections import deque
-# input = sys.stdin.readline
-
-
-# def solution():
-#     N = int(input())
-#     que = deque()
-#     for _ in range(N):
-#         order, *num = map(int, input().split())
-#         if order == 1:
-#             que.appendleft(*num)
-#         elif order == 2:
-#             que.append(*num)
-#         elif order == 3:
-#             print(que.popleft() if que else -1)
-#         elif order == 4:
-#             print(que.pop() if que else -1)
-#         elif order == 5:
-#             print(len(que))
-#         elif order == 6:
-#             print(0 if que else 1)
-#         elif order == 7:
-#             print(que[0] if que else -1)
-#         else:
-#             print(que[-1] if que else -1)
-            
-
-
-# if __name__ == "__main__":
-#     solution()
